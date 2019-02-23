@@ -50,12 +50,10 @@ easyvk({
             let json = JSON.parse(data);
 
             if (typeof json.updates == "undefined"){
-                console.log("Отсутствует объект updates")
                 return;
             }
 
             if (!(0 in json.updates)){
-                console.log("Ошибка в проверке наличия кода ответа")
                 return;
             }
 
