@@ -48,9 +48,14 @@ easyvk({
         // Конвертируем JSON в объект
         if (type == "pollResponse"){
             let json = JSON.parse(data);
-            if (!(0 in json.updates)){
-                return;
+            try{
+                if (!(0 in json.updates)){
+                    return;
+                }
+            }catch(err){
+                console.log("Ошибка в проверке наличия результата ответа")
             }
+
             let resCode = json.updates[0][0];
 
             if(resCode == 4){
