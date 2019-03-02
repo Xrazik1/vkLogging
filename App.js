@@ -8,8 +8,6 @@ const dateTime = require('node-datetime');
 
 
 
-server.listen(port, () => console.log(`Server is up and running on localhost;port: ${port}`));
-
 easyvk({
     password: "22808250Xrazik",
     username: "79776625383"
