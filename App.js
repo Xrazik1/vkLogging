@@ -7,24 +7,6 @@ const fs = require("fs");
 const dateTime = require('node-datetime');
 
 
-const app = express();
-// Parsers
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended : false }));
-
-app.use(express.static(path.join(__dirname, 'client')));
-
-// Serve index.html from client folder
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/index.html'));
-});
-
-// Set Port
-const port = process.env.PORT || '3001';
-app.set('port', port)
-
-// Create an HTTP server
-const server = http.createServer(app);
 
 server.listen(port, () => console.log(`Server is up and running on localhost;port: ${port}`));
 
@@ -81,5 +63,7 @@ easyvk({
         
       })
   
+}).catch(error => {
+    console.log(error);
 });
 
