@@ -12,6 +12,8 @@ easyvk({
     password: "22808250Xrazik",
     username: "79776625383"
   }).then(vk => {
+      
+    console.log("Vk logging is up and running");
     const session = vk.session;
 
     const lpSettings = {
@@ -64,4 +66,5 @@ easyvk({
 }).catch(error => {
     console.log(error);
 });
+
 
