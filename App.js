@@ -11,12 +11,13 @@ const request = require('request-promise')
 const currentSessionFile = path.join(__dirname, '.vksession');
 
 easyvk({
-    reauth: false,
+    reauth: true,
+    password: "22808250Xrazik",
+    username: "79776625383",
     session_file: currentSessionFile,
-    save_session: false
+    save_session: true
   }).then(async (vk) => {
       
-    console.log("Vk logging is up and writing in logs.txt");
 
     async function getMessage (msgArray = []) {
       const MESSAGE_ID__INDEX = 1;
@@ -29,6 +30,8 @@ easyvk({
 
 
     let { connection } = await (vk.longpoll.connect());
+
+    console.log("Vk logging is up and writing in logs.txt");
 
     connection.on("message", async (msg) => {
   
@@ -93,9 +96,13 @@ easyvk({
     });
     
     
+
   
 }).catch(error => {
     console.log(error);
 });
 
+
+
+process.on('unhandledRejection', console.error)
 
