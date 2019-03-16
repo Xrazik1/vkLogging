@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@google-cloud/speech": "^2.3.0",
+    "@google-cloud/storage": "^2.4.3",
     "easyvk": "^2.2.16",
     "express": "^4.16.4",
     "linear16": "^1.1.0",

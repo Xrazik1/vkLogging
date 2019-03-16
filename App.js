@@ -5,6 +5,9 @@ const dateTime = require('node-datetime');
 const asr = require('./asr');
 const request = require("request")
 
+// D:/OSPanel/domains/localhost/CodeMasters/Learning/js/node/logging/MyFirstProject-050be69572ad.json
+
+process.env.GOOGLE_APPLICATION_CREDENTIALS="/home/kolan/www/vkbot/vkLogging/MyFirstProject-050be69572ad.json"
 
 let handleAudioPhrase = (audioPhrase, fullMessage, vk) => {
   let dt = dateTime.create();
