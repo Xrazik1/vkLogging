@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "lucky-eon-234318",
+  "private_key_id": "050be69572adc154dc5b5a93925a18d5d3de9aa2",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCyJAJ0KMDHn6gH\n4hH5JqaTBUXtwUbJbnPodUqp6lYgJgFYrOWDQAg7KOWyxquOlf5Ls266V0IAugoC\n0LGLOvZMS+IDZQYI8NSshbG8in25mj/cAglu3hZYBUH2NLiJ0qkZBmachQH7j0RV\nx7SpHbW5qvzev+7h5ZqCexz0KmS2gxrZksxM5UdFyMZWdvDGCabLTXOfAorWa0rp\nvUhVR9/iAGZwLsH7Ki7dRxtN487JVzAnowOMiiAsYT+tRnDY/Zs+kcsxeE3SCEAh\nIFYXaUrUMhhpGc19ZHxL00ZoUTOoj+SDWEGSq2bbjY5EYHLMKyZsp/eiW57lP+x4\nvmQhocXPAgMBAAECggEAMiE9CYgwW9y7ceB181mjlYrt107FB0lMV9Wt+avmqaxY\nQ6Z//dPmnRNQtGMBAyKFibMITWrhuYeg6pLk64vfpK/T/eWPcbOn/Zav4iFM6Q6V\nuuld0zOvMPzlx42lgq9kA5VQCerKGIsEDWmiFtcz/Pg3qc10QWCV/vL7PmCxr8Qz\n2NpSJNmzSuGFOv39vHoqXe7E+3mK6E0bPqEsk0EnQqbVtI8zdyHoWo81VJ4p6udY\nFwP/avcHtHtxuOYVV7Uc627/++PY5bEMjLhEe8VE9e3gHI4xwpY0EkppmsC51Voe\nck/rMrHq+cT6ndev1XJb2BRDJefKQeSUSlvxXvemNQKBgQDffxirI0DbJWpwi8u0\nh9ESCl2YdohQqlRC+8uJTB724xL2Ea/x3ZLbBqR9v0j64rjc0S9FsespgfhoE40E\n/IkimOotv4nWEGoWzkUSZ95nBa6tpfr1ry8Z28k6vIXphTHp+o5z/EWCHw2LT3fB\nehbMu1BpJCqiYH8UtobhiqNvYwKBgQDMDEpEmTLt8nsGi4OoUFnXkYK7X8y8x9IM\nfjepceVEldHDIs0vQ9zdTV9NGS3AIF+jnQWVRDpqDt7+iCkeRPVjneOzMrS7mV0c\nnmuPsotUsq1kfvJdK4mueIcWQMYqlCMJLgIv/sDt9u7DNfN2O//GU3+H2wHkldC2\nkfFGrkWJpQKBgAN9+OSzqE/EReV8SbKIbLvbbZr0Py0DfE2PoZ6DkfhJlAJERHuC\n+shxUiCk3H8PC9RncFWmcgY0Aa2eoJVzXLEtsnsEgyLVHtM8Zdfjx5XUgOY1sbYl\nBpdg18QTLgR4EE+XmqI1TuC5m3yRwU1EmxaX1qnN5tyipVmtgG4FvIgBAoGAAglF\nXHXi6jj3PVN7FtzmaJ5NHa2RD3k3AWTpDUnTreGI3FemkIgu1g6FmvFbYYVxLuLM\nQXcS1igb1ZJqRqENidbzhMBGyXB4W2bBUAfKGChITq5toLxkfVc6keBHmfkseFT7\nNJtoNXe3Xj9VlKJ4pPQEW8i1tiBAmvHN5JSsoPkCgYBT+S/ZkSEKCc1zRVo38tbJ\nb4+Va/cEl9e1sNV0AO8jw/33Dl4TXdaYlJ0xqrbCBMQOm4Oymp9sgfeHlz+d26ww\nFs7wKCvyyIk53QkL5uEBKVQqILzHzefkhYIk/HfrSEhTtniSCjN4A3LE+3vb2O4W\noqnBc710Iz4gJAJ/v2gnKA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "speechbot@lucky-eon-234318.iam.gserviceaccount.com",
+  "client_id": "107876962039144951100",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/speechbot%40lucky-eon-234318.iam.gserviceaccount.com"
+}

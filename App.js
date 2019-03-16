@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const dateTime = require('node-datetime');
 const asr = require('./asr');
-const request = require("request");
+const request = require("request")
 
 
 let handleAudioPhrase = (audioPhrase, fullMessage, vk) => {
