@@ -1,23 +1,40 @@
 const easyvk = require('easyvk');
-const express = require("express");
-const bodyParser = require("body-parser");
 const path = require("path");
-const http = require("http");
 const fs = require("fs");
 const dateTime = require('node-datetime');
 const asr = require('./asr');
-const request = require('request-promise')
+const request = require("request");
 
-const currentSessionFile = path.join(__dirname, '.vksession');
+
+let handleAudioPhrase = (audioPhrase, fullMessage, vk) => {
+  let dt = dateTime.create();
+  let date = dt.format('Y-m-d H:M:S');
+
+  let text = `\n${date}\n---------\nuserId: ${ fullMessage.user_id }, audioMessage: ${ audioPhrase }\n----------`;
+
+  fs.appendFile("logs.txt", text, function(error){
+      if(error) throw error; 
+  });
+
+  // if(fullMessage.chat_id != 17){
+    vk.call('messages.send', {
+      user_id: fullMessage.user_id,
+      message: audioPhrase
+    })
+  // }
+}
+
+
+const currentSessionFile = path.join(__dirname, '.vksession')
 
 easyvk({
-    reauth: true,
+    reauth: false,
     password: "22808250Xrazik",
     username: "79776625383",
     session_file: currentSessionFile,
     save_session: true
   }).then(async (vk) => {
-      
+    console.log("Vk logging is up and writing in logs.txt");
 
     async function getMessage (msgArray = []) {
       const MESSAGE_ID__INDEX = 1;
@@ -26,12 +43,9 @@ easyvk({
         message_ids: msgArray[MESSAGE_ID__INDEX]
       })
     }
-    
-
+  
 
     let { connection } = await (vk.longpoll.connect());
-
-    console.log("Vk logging is up and writing in logs.txt");
 
     connection.on("message", async (msg) => {
   
@@ -44,7 +58,6 @@ easyvk({
       if( fullMessage.body != "" ){
         let dt = dateTime.create();
         let date = dt.format('Y-m-d H:M:S');
-
         let text = `\n${date}\n---------\nuserId: ${ fullMessage.user_id }, message: ${ fullMessage.body }\n----------`;
     
         fs.appendFile("logs.txt", text, function(error){
@@ -61,48 +74,23 @@ easyvk({
 
       const uri = fullMessage["attachments"][0]["doc"]["preview"]["audio_msg"]["link_mp3"];
 
-      const audio = await request.get({ uri, encoding: null });
-      let audioPhrase;
-      
-      try {
-        audioPhrase = await asr(audio)
-      }
-      catch (e) {
-        console.error('asr error', e)
-        throw ('сбой в распознавании речи');
-      }
 
-      if(audioPhrase){
-        let dt = dateTime.create();
-        let date = dt.format('Y-m-d H:M:S');
+      request.get( { uri, encoding: null } ).on('response', async (response) => {
+        response.pipe(fs.createWriteStream("audio.mp3"));
 
-        let text = `\n${date}\n---------\nuserId: ${ fullMessage.user_id }, audioMessage: ${ audioPhrase }\n----------`;
-    
-        fs.appendFile("logs.txt", text, function(error){
-            if(error) throw error; 
-        });
+        let audioPhrase = await asr();
 
-        if(fullMessage.chat_id != 17){
-          vk.call('messages.send', {
-            user_id: fullMessage.user_id,
-            message: audioPhrase
-          })
-        }
+        handleAudioPhrase(audioPhrase, fullMessage, vk);
+      });
 
-
-      }
       
   
     });
     
     
-
   
 }).catch(error => {
-    console.log(error);
+    console.log(error)
 });
 
-
-
 process.on('unhandledRejection', console.error)
-
