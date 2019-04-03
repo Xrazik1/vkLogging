@@ -5,15 +5,20 @@ const dateTime = require('node-datetime');
 const asr = require('./asr');
 const request = require("request")
 
-// D:/OSPanel/domains/localhost/CodeMasters/Learning/js/node/logging/MyFirstProject-050be69572ad.json
+// D:/OSPanel/domains/localhost/CodeMasters/Learning/js/node/logging/MyFirstProject-050be69572ad.json /home/kolan/www/vkbot/vkLogging/
 
-process.env.GOOGLE_APPLICATION_CREDENTIALS="/home/kolan/www/vkbot/vkLogging/MyFirstProject-050be69572ad.json"
+process.env.GOOGLE_APPLICATION_CREDENTIALS = path.dirname(require.main.filename) + "/MyFirstProject-050be69572ad.json"
 
-let handleAudioPhrase = (audioPhrase, fullMessage, vk) => {
+let handleAudioPhrase = async (audioPhrase, fullMessage, vk) => {
   let dt = dateTime.create();
   let date = dt.format('Y-m-d H:M:S');
 
-  let text = `\n${date}\n---------\nuserId: ${ fullMessage.user_id }, audioMessage: ${ audioPhrase }\n----------`;
+  userData = await vk.call('users.get', {
+    user_ids: fullMessage.user_id
+  })
+  
+  let text = `\n${date}\n---------\nuserId: ${ fullMessage.user_id }, Name: ${ userData.vkr[0]["first_name"] }, LastName: ${ userData.vkr[0]["last_name"] }, audioMessage: ${ audioPhrase }\n----------`;
+
 
   fs.appendFile("logs.txt", text, function(error){
       if(error) throw error; 
@@ -30,14 +35,16 @@ let handleAudioPhrase = (audioPhrase, fullMessage, vk) => {
 
 const currentSessionFile = path.join(__dirname, '.vksession')
 
+
 easyvk({
     reauth: false,
-    password: "22808250Xrazik",
+    password: "Xrazik@yandex.ru",
     username: "79776625383",
     session_file: currentSessionFile,
     save_session: true
   }).then(async (vk) => {
     console.log("Vk logging is up and writing in logs.txt");
+
 
     async function getMessage (msgArray = []) {
       const MESSAGE_ID__INDEX = 1;
@@ -59,9 +66,16 @@ easyvk({
 
       
       if( fullMessage.body != "" ){
+
+        userData = await vk.call('users.get', {
+          user_ids: fullMessage.user_id
+        })
+
+
+
         let dt = dateTime.create();
         let date = dt.format('Y-m-d H:M:S');
-        let text = `\n${date}\n---------\nuserId: ${ fullMessage.user_id }, message: ${ fullMessage.body }\n----------`;
+        let text = `\n${date}\n---------\nuserId: ${ fullMessage.user_id }, Name: ${ userData.vkr[0]["first_name"] }, LastName: ${ userData.vkr[0]["last_name"] }, message: ${ fullMessage.body }\n----------`;
     
         fs.appendFile("logs.txt", text, function(error){
             if(error) throw error; 
