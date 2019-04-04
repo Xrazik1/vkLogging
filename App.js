@@ -71,7 +71,7 @@ easyvk({
           user_ids: fullMessage.user_id
         })
         userData.vkr[0]["first_name"]
-        console.log(userData)
+
 
         let dt = dateTime.create();
         let date = dt.format('Y-m-d H:M:S');
