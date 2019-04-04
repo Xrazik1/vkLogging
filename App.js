@@ -24,12 +24,12 @@ let handleAudioPhrase = async (audioPhrase, fullMessage, vk) => {
       if(error) throw error; 
   });
 
-  // if(fullMessage.chat_id != 17){
+  if(fullMessage.chat_id != 17){
     vk.call('messages.send', {
       user_id: fullMessage.user_id,
       message: audioPhrase
     })
-  // }
+  }
 }
 
 
@@ -70,8 +70,8 @@ easyvk({
         userData = await vk.call('users.get', {
           user_ids: fullMessage.user_id
         })
-
-
+        userData.vkr[0]["first_name"]
+        console.log(userData)
 
         let dt = dateTime.create();
         let date = dt.format('Y-m-d H:M:S');
