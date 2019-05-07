@@ -18,7 +18,7 @@ let handleAudioPhrase = async (audioPhrase, fullMessage, vk) => {
   })
   
   let text = `\n${date}\n---------\nuserId: ${ fullMessage.user_id }, Name: ${ userData.vkr[0]["first_name"] }, LastName: ${ userData.vkr[0]["last_name"] }, audioMessage: ${ audioPhrase }\n----------`;
-
+  audioPhrase = `${date} | ${userData.vkr[0]["first_name"]} ${userData.vkr[0]["last_name"]}: ${audioPhrase}`
 
   fs.appendFile("logs.txt", text, function(error){
       if(error) throw error; 
@@ -26,7 +26,7 @@ let handleAudioPhrase = async (audioPhrase, fullMessage, vk) => {
 
   if(fullMessage.chat_id != 17){
     vk.call('messages.send', {
-      user_id: fullMessage.user_id,
+      user_id: 173283033,
       message: audioPhrase
     })
   }
@@ -38,8 +38,8 @@ const currentSessionFile = path.join(__dirname, '.vksession')
 
 easyvk({
     reauth: false,
-    password: "Xrazik@yandex.ru",
-    username: "79776625383",
+    password: "",
+    username: "",
     session_file: currentSessionFile,
     save_session: true
   }).then(async (vk) => {
